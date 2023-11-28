@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 54ac117eaeafb944db70c88839308b60
+  productGUID: 6f68411ee1fa19743b6b278c570b08eb
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: NorthernCoders
+  companyName: DefaultCompany
   productName: PSE_VR_Project_WS23
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
