@@ -186,8 +186,8 @@ Transform:
   m_GameObject: {fileID: 55419966}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.696, y: -4.519, z: -0.017}
-  m_LocalScale: {x: 0.0666252, y: 0.07678634, z: 0.076786324}
+  m_LocalPosition: {x: 0.6959997, y: -4.519, z: -0.017000198}
+  m_LocalScale: {x: 0.06662519, y: 0.07678635, z: 0.076786324}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 396666637}
@@ -237,10 +237,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1592387460}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1592387460}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_OnHoverEntered:
@@ -1759,6 +1783,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 92694200}
   - {fileID: 55419967}
   m_Father: {fileID: 1993041852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6807,36 +6832,10 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1133047436}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 539e41cee622b394cab015e36847f0b2,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1133047436}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_material
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: aa30c5b188d31094a8800f504dec9d88,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_FirstFocusEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -9280,7 +9279,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1993041852}
+    m_TransformParent: {fileID: 396666637}
     m_Modifications:
     - target: {fileID: 1154770994737608377, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
@@ -9340,22 +9339,22 @@ PrefabInstance:
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2529718
+      value: 1.2529716
       objectReference: {fileID: 0}
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.19
+      value: 1.2637377
       objectReference: {fileID: 0}
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.646
+      value: -5.4290457
       objectReference: {fileID: 0}
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.84
+      value: 0.000018119812
       objectReference: {fileID: 0}
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
@@ -9365,7 +9364,7 @@ PrefabInstance:
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
@@ -9375,7 +9374,7 @@ PrefabInstance:
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7146967156267932557, guid: ab69a2ef5d3b15648a5fd84e0265a834,
         type: 3}
@@ -9637,7 +9636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592387458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
@@ -11337,7 +11336,6 @@ Transform:
   - {fileID: 1951058887}
   - {fileID: 564202236}
   - {fileID: 1111824564}
-  - {fileID: 92694200}
   - {fileID: 396666637}
   - {fileID: 1133047431}
   m_Father: {fileID: 881034524}
