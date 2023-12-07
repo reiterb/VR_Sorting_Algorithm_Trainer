@@ -36,7 +36,7 @@ public class Socket : MonoBehaviour
     {
         for (int i = 0; i < ArrayManager.Instance.sockets.Length; i++)
         {
-            if (ArrayManager.Instance.sockets[i] == transform)
+            if (ArrayManager.Instance.sockets[i].transform == transform)
             {
                 return i;
             }
