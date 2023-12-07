@@ -35,10 +35,8 @@ public class ArrayManager : MonoBehaviour
         Debug.Log("Updated Array Values:");
         for (int i = 0; i < arrVal.Length; i++)
         {
-            Debug.Log("Position " + i + ": " + arrVal[i]);
             text += "[" + arrVal[i] + "] ";
         }
-        Debug.Log("Updated Array Values: " + text);
         arrayText.text = text; 
     }
 
