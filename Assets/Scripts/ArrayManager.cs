@@ -43,6 +43,29 @@ public class ArrayManager : MonoBehaviour
         }
         arrayText.text = text; 
     }
+    
+    public void UpdateArray()
+    {
+        // Update sockets
+        // for (int i = 0; i < sockets.Length; i++)
+        // {
+        //     if (sockets[i].ContainsBall()){
+        //     {
+        //         arrVal[i] = sockets[i].GetVBall().GetValue(); 
+        //     }
+        //     else
+        //     {
+        //         arrVal[i] = -1; 
+        //     }
+        // }
+        
+        //     string text = "Current Array \n \n";
+        //     foreach (var t in arrVal)
+        //     {
+        //         text += "[" + t + "] ";
+        //     }
+        //     arrayText.text = text;
+    }
 
     void InitializeArray()
     {
@@ -54,96 +77,87 @@ public class ArrayManager : MonoBehaviour
 
         arrayText.text = "Current Array \n \n[0] [0] [0]";
     }
-
-    public void SwapBallPositions(int indexA, int indexB)
-    {
-        if (indexA < 0 || indexA >= sockets.Length || indexB < 0 || indexB >= sockets.Length)
-        {
-            Debug.LogError("Invalid indices for swapping ball positions.");
-            return;
-        }
-        
-        GameObject socketA = sockets[indexA];
-        GameObject socketB = sockets[indexB];
-
-        // Get the initial positions of the balls
-        Vector3 originPositionA = socketA.transform.position; //(0.7,0.46,-2,66)
-        Vector3 originPositionB = socketB.transform.position; //(0.4,0.46,-2,66)
-        
-        Debug.Log("originA = " + originPositionA);
-        Debug.Log("originB = " + originPositionB);
-        
-        Vector3 currPosA = originPositionA; 
-        Vector3 currPosB = originPositionB;
-        
-        Debug.Log("currPosA = " + currPosA);
-        Debug.Log("currPosB = " + currPosB);
-
-        // Move the balls up
-        Debug.Log("move up");
-        currPosA.y += 0.3f;
-        currPosB.y += 0.5f;
-        
-        Debug.Log("currPosA = " + currPosA);
-        Debug.Log("currPosB = " + currPosB);
-
-        StartCoroutine(MoveObject(socketA.transform, currPosA, moveSpeed)); 
-        // socketA.transform.position = currPosA;
-        StartCoroutine(MoveObject(socketB.transform, currPosB, moveSpeed)); 
-        // socketB.transform.position = currPosB;
-        
-        
-        // Todo Move the balls sidewards  
-        // Todo BUG: the Button will activate event 2 times !!!! -> thus nothing works after that point! 
-        
-        // Debug.Log("move sidewards");
-        // currPosA.x = originPositionB.x; 
-        // currPosA.z = originPositionB.z; 
-        // currPosB.x = originPositionA.x;
-        // currPosB.z = originPositionA.z;
-        //
-        // Debug.Log("currPosA = " + currPosA);
-        // Debug.Log("currPosB = " + currPosB);
-        //
-        // Debug.Log("originA = " + originPositionA);
-        // Debug.Log("originB = " + originPositionB);
-        //
-        // socketA.transform.position = currPosA;
-        // socketB.transform.position = currPosB;
-        // StartCoroutine(MoveObject(socketA.transform, currPosA, moveSpeed));
-        // StartCoroutine(MoveObject(socketB.transform, currPosB, moveSpeed));
-        
-        // Todo Move the balls Down
-        // currPosA.y = originPositionB.y; 
-        // currPosB.y = originPositionA.y; 
-        //
-        // Debug.Log("move down");
-        // socketA.transform.position = currPosA;
-        // socketB.transform.position = currPosB;
-        //
-        // // Swap index
-        // (sockets[indexA], sockets[indexB]) = (sockets[indexB], sockets[indexA]);
-    }
-
+    
+    
     public void testSwap()
     {
         Debug.Log("testSwap initialized");
         SwapBallPositions(0,2);
     }
     
-    private IEnumerator MoveObject (Transform objTransform, Vector3 targetPosition, float speed)
+     public void SwapBallPositions(int indexA, int indexB)
+     {
+         if (indexA < 0 || indexA >= sockets.Length || indexB < 0 || indexB >= sockets.Length)
+         {
+             Debug.LogError("Invalid indices for swapping ball positions.");
+             return;
+         }
+         Debug.Log("called");
+
+         StartCoroutine(MoveBalls(indexA, indexB));
+        
+         // Swap sockets 
+         (sockets[indexA], sockets[indexB]) = (sockets[indexB], sockets[indexA]);
+
+         UpdateArray(); // Update components after swapping positions
+     }
+     
+    private IEnumerator MoveBalls(int indexA, int indexB)
     {
+        float upA = 0.3f;
+        float upB = 0.5f;
+
+        GameObject socketA = sockets[indexA];
+        GameObject socketB = sockets[indexB];
+
+        Vector3 originPositionA = socketA.transform.position;
+        Vector3 originPositionB = socketB.transform.position;
+
+        Vector3 upPosA = originPositionA + new Vector3(0, upA, 0);
+        Vector3 upPosB = originPositionB + new Vector3(0, upB, 0);
+
+        // Move the balls up
         float t = 0f;
-        Vector3 startPosition = objTransform.position;
 
         while (t < 1f)
         {
-            t += Time.deltaTime * speed;
-            objTransform.position = Vector3.Lerp(startPosition, targetPosition, t);
-            yield return null;
+            t += Time.deltaTime * moveSpeed;
+            socketA.transform.position = Vector3.Lerp(originPositionA, upPosA, t);
+            socketB.transform.position = Vector3.Lerp(originPositionB, upPosB, t);
+            yield return new WaitForEndOfFrame();
         }
-        
-        objTransform.position = targetPosition;
+
+        Vector3 sidePosA = new Vector3(originPositionB.x, upPosA.y, originPositionB.z);
+        Vector3 sidePosB = new Vector3(originPositionA.x, upPosB.y, originPositionA.z);
+
+        // Move sidewards
+        t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * moveSpeed;
+            socketA.transform.position = Vector3.Lerp(upPosA, sidePosA, t);
+            socketB.transform.position = Vector3.Lerp(upPosB, sidePosB, t);
+            yield return new WaitForEndOfFrame();
+        }
+
+        Vector3 downPosA = sidePosA - new Vector3(0, upA, 0);
+        Vector3 downPosB = sidePosB - new Vector3(0, upB, 0);
+
+        // Move down
+        t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * moveSpeed;
+            socketA.transform.position = Vector3.Lerp(sidePosA, downPosA, t);
+            socketB.transform.position = Vector3.Lerp(sidePosB, downPosB, t);
+            yield return new WaitForEndOfFrame();
+        }
+
+        // Finally, make sure sockets changed exact place
+        socketA.transform.position = originPositionB;
+        socketB.transform.position = originPositionA;
     }
     
 }

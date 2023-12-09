@@ -43,4 +43,14 @@ public class Socket : MonoBehaviour
         }
         return -1; 
     }
+    
+    public bool ContainsBall()
+    {
+        return _currValBall != null;
+    }
+
+    public ValueBall GetVBall()
+    {
+        return _currValBall;
+    }
 }
