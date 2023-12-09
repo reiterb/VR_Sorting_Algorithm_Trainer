@@ -10,12 +10,11 @@ public class ArrayManager : MonoBehaviour
     public GameObject[] vBalls;
     public GameObject[] sockets;
     public TMP_Text arrayText;
-    
-    [Header("Swap velocity")]
-    public float moveSpeed = 5.0f;
+
+    [Header("Swap velocity")] public float moveSpeed = 5.0f;
 
     private int[] arrVal;
-    
+
     private void Awake()
     {
         if (Instance == null)
@@ -41,30 +40,35 @@ public class ArrayManager : MonoBehaviour
         {
             text += "[" + arrVal[i] + "] ";
         }
-        arrayText.text = text; 
+
+        arrayText.text = text;
     }
-    
+
     public void UpdateArray()
     {
         // Update sockets
-        // for (int i = 0; i < sockets.Length; i++)
-        // {
-        //     if (sockets[i].ContainsBall()){
-        //     {
-        //         arrVal[i] = sockets[i].GetVBall().GetValue(); 
-        //     }
-        //     else
-        //     {
-        //         arrVal[i] = -1; 
-        //     }
-        // }
-        
-        //     string text = "Current Array \n \n";
-        //     foreach (var t in arrVal)
-        //     {
-        //         text += "[" + t + "] ";
-        //     }
-        //     arrayText.text = text;
+        for (int i = 0; i < sockets.Length; i++)
+        {
+            Socket valueSocket = sockets[i].GetComponent<Socket>();
+            if (valueSocket.ContainsBall())
+            {
+                {
+                    arrVal[i] = valueSocket.GetVBall().GetValue();
+                }
+            }
+            else
+            {
+                arrVal[i] = -1;
+            }
+        }
+
+        string text = "Current Array \n \n";
+        foreach (var t in arrVal)
+        {
+            text += "[" + t + "] ";
+        }
+
+        arrayText.text = text;
     }
 
     void InitializeArray()
@@ -77,31 +81,32 @@ public class ArrayManager : MonoBehaviour
 
         arrayText.text = "Current Array \n \n[0] [0] [0]";
     }
-    
-    
+
+
     public void testSwap()
     {
         Debug.Log("testSwap initialized");
-        SwapBallPositions(0,2);
+        SwapBallPositions(0, 2);
     }
-    
-     public void SwapBallPositions(int indexA, int indexB)
-     {
-         if (indexA < 0 || indexA >= sockets.Length || indexB < 0 || indexB >= sockets.Length)
-         {
-             Debug.LogError("Invalid indices for swapping ball positions.");
-             return;
-         }
-         Debug.Log("called");
 
-         StartCoroutine(MoveBalls(indexA, indexB));
-        
-         // Swap sockets 
-         (sockets[indexA], sockets[indexB]) = (sockets[indexB], sockets[indexA]);
+    public void SwapBallPositions(int indexA, int indexB)
+    {
+        if (indexA < 0 || indexA >= sockets.Length || indexB < 0 || indexB >= sockets.Length)
+        {
+            Debug.LogError("Invalid indices for swapping ball positions.");
+            return;
+        }
 
-         UpdateArray(); // Update components after swapping positions
-     }
-     
+        Debug.Log("called");
+
+        StartCoroutine(MoveBalls(indexA, indexB));
+
+        // Swap sockets 
+        (sockets[indexA], sockets[indexB]) = (sockets[indexB], sockets[indexA]);
+
+        UpdateArray(); // Update components after swapping positions
+    }
+
     private IEnumerator MoveBalls(int indexA, int indexB)
     {
         float upA = 0.3f;
@@ -159,5 +164,4 @@ public class ArrayManager : MonoBehaviour
         socketA.transform.position = originPositionB;
         socketB.transform.position = originPositionA;
     }
-    
 }
