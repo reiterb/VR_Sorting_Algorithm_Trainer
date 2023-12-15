@@ -16,15 +16,6 @@ public class KeyEnabled : MonoBehaviour
         keyRenderer = GetComponent<Renderer>();
 
         keyRenderer.sharedMaterial = disabled_Mat;
-
-        if(keyGrabInteractable.enabled)
-        {
-            Debug.Log("ENABLED");
-        }
-        else
-        {
-            Debug.Log("DISABLED");
-        }
     }
 
     // Update is called once per frame
@@ -32,12 +23,10 @@ public class KeyEnabled : MonoBehaviour
     {
         if (keyGrabInteractable.enabled)
         {
-            Debug.Log("ENABLED");
             keyRenderer.sharedMaterial = enabledMat;
         }
         else
         {
-            Debug.Log("DISABLED");
             keyRenderer.sharedMaterial = disabled_Mat;
 
         }
