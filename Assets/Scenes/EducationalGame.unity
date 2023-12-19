@@ -1100,7 +1100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56183481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1108,7 +1108,7 @@ Transform:
   - {fileID: 1273308243}
   - {fileID: 963954882}
   - {fileID: 1039928438}
-  m_Father: {fileID: 1721844688}
+  m_Father: {fileID: 1001930270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &92694200 stripped
 Transform:
@@ -12510,6 +12510,7 @@ GameObject:
   - component: {fileID: 963954885}
   - component: {fileID: 963954884}
   - component: {fileID: 963954883}
+  - component: {fileID: 963954888}
   m_Layer: 0
   m_Name: Code Socket 2
   m_TagString: Untagged
@@ -12677,6 +12678,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963954881}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &963954888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963954881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37fd8b089e229f40a6d98588fdd072a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedCodeBlockManager: {fileID: 1001930271}
+  CorrectCodeBlock: {fileID: 36392443}
 --- !u!1 &964565871
 GameObject:
   m_ObjectHideFlags: 0
@@ -12934,6 +12949,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fe167259a7179b48bddc74706b0f320, type: 3}
+--- !u!1 &1001930269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1001930270}
+  - component: {fileID: 1001930271}
+  m_Layer: 0
+  m_Name: Quiz
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001930270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001930269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1960785965}
+  - {fileID: 56183482}
+  m_Father: {fileID: 1721844688}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1001930271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001930269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93339319f621034d939361b3f7d0b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfTasksToComplete: 3
+  onQuizzCompletion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 946405598}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &1006312709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
@@ -12954,6 +13031,7 @@ GameObject:
   - component: {fileID: 1039928441}
   - component: {fileID: 1039928440}
   - component: {fileID: 1039928439}
+  - component: {fileID: 1039928444}
   m_Layer: 0
   m_Name: Code Socket 3
   m_TagString: Untagged
@@ -13121,6 +13199,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039928437}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1039928444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039928437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37fd8b089e229f40a6d98588fdd072a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedCodeBlockManager: {fileID: 1001930271}
+  CorrectCodeBlock: {fileID: 358671328}
 --- !u!1 &1040689379
 GameObject:
   m_ObjectHideFlags: 0
@@ -15792,6 +15884,7 @@ GameObject:
   - component: {fileID: 1273308246}
   - component: {fileID: 1273308245}
   - component: {fileID: 1273308244}
+  - component: {fileID: 1273308249}
   m_Layer: 0
   m_Name: Code Socket 1
   m_TagString: Untagged
@@ -15959,6 +16052,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273308242}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1273308249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273308242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37fd8b089e229f40a6d98588fdd072a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedCodeBlockManager: {fileID: 1001930271}
+  CorrectCodeBlock: {fileID: 416085003}
 --- !u!1 &1281055926
 GameObject:
   m_ObjectHideFlags: 0
@@ -23371,8 +23478,7 @@ Transform:
   - {fileID: 109319353}
   - {fileID: 551755238}
   - {fileID: 946405595}
-  - {fileID: 1960785965}
-  - {fileID: 56183482}
+  - {fileID: 1001930270}
   m_Father: {fileID: 569529194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1730565716
@@ -25279,7 +25385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960785964}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25287,7 +25393,7 @@ Transform:
   - {fileID: 416085003}
   - {fileID: 36392443}
   - {fileID: 358671328}
-  m_Father: {fileID: 1721844688}
+  m_Father: {fileID: 1001930270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964663572
 GameObject:
