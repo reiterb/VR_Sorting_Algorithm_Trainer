@@ -20,9 +20,9 @@ MonoBehaviour:
   - Water
   - UI
   - CodeSocket
-  - QuickSortSocket
-  - 
-  - 
+  - BubbleSortTop
+  - BubbleSortMiddle
+  - BubbleSortBottom
   - 
   - 
   - 
