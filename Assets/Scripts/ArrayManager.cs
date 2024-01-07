@@ -1,19 +1,24 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
+using Random = UnityEngine.Random;
 
 public class ArrayManager : MonoBehaviour
 {
     public static ArrayManager Instance;
 
-    public GameObject[] vBalls;
+    // public GameObject[] vBalls;
     public GameObject[] sockets;
     public TMP_Text arrayText;
 
     [Header("Swap velocity")] public float moveSpeed = 5.0f;
 
     private int[] arrVal;
+    
+    private Queue<Tuple<int, int>> swapQueue = new Queue<Tuple<int, int>>();
+    private bool isSwapping = false;
 
     private void Awake()
     {
@@ -32,19 +37,21 @@ public class ArrayManager : MonoBehaviour
         InitializeArray();
     }
 
+    // Updates the Array Value of TMP_Text arrayText on a specific index to an specific value 
     public void UpdateArrayValue(int value, int index)
     {
         arrVal[index] = value;
         string text = "Current Array \n \n";
-        for (int i = 0; i < arrVal.Length; i++)
+        foreach (var t in arrVal)
         {
-            text += "[" + arrVal[i] + "] ";
+            text += "[" + t + "] ";
         }
 
         arrayText.text = text;
     }
-
-    public void UpdateArray()
+    
+    // Updates the Array Value of TMP_Text arrayText by going through every socket
+    private void UpdateArray()
     {
         // Update sockets
         for (int i = 0; i < sockets.Length; i++)
@@ -82,24 +89,70 @@ public class ArrayManager : MonoBehaviour
         arrayText.text = "Current Array \n \n[0] [0] [0]";
     }
 
-
     public void testSwap()
     {
         Debug.Log("testSwap initialized");
-        SwapBallPositions(0, 2);
+        SwapBallPositions(0, 1);
+        SwapBallPositions(2, 3);
+        SwapBallPositions(4, 5);
+        SwapBallPositions(0, 4);
     }
 
-    public void SwapBallPositions(int indexA, int indexB)
+    public void doBubbleSort()
+    {
+        List<Tuple<int, int>> swapList = BubbleSortWithSwaps(arrVal);
+
+        foreach (var t in swapList)
+        {
+            SwapBallPositions(t.Item1, t.Item2); 
+        }
+    }
+    
+    public void shuffleArray()
+    {
+        for (int i = 0; i < sockets.Length; i++)
+        {
+            int randomIndex = Random.Range(0, sockets.Length);
+            SwapBallPositions(i, randomIndex);
+        }
+    }
+
+    private void SwapBallPositions(int indexA, int indexB)
     {
         if (indexA < 0 || indexA >= sockets.Length || indexB < 0 || indexB >= sockets.Length)
         {
             Debug.LogError("Invalid indices for swapping ball positions.");
             return;
         }
+        
+        // Enqueue the swap request
+        swapQueue.Enqueue(new Tuple<int, int>(indexA, indexB));
+        Debug.Log($"Enqueued swap request: {indexA} <-> {indexB}");
 
-        Debug.Log("called");
+        // If not currently swapping, start the coroutine
+        if (!isSwapping)
+        {
+            StartCoroutine(SequentialSwapCoroutine());
+        }
+    }
+    
+    private IEnumerator SequentialSwapCoroutine()
+    {
+        isSwapping = true;
 
-        StartCoroutine(MoveBalls(indexA, indexB));
+        // Process swaps one by one
+        while (swapQueue.Count > 0)
+        {
+            Tuple<int, int> swapRequest = swapQueue.Dequeue();
+            yield return StartCoroutine(SwapCoroutine(swapRequest.Item1, swapRequest.Item2));
+        }
+
+        isSwapping = false;
+    }
+    
+    private IEnumerator SwapCoroutine(int indexA, int indexB)
+    {
+        yield return StartCoroutine(MoveBalls(indexA, indexB));
 
         // Swap sockets 
         (sockets[indexA], sockets[indexB]) = (sockets[indexB], sockets[indexA]);
@@ -163,5 +216,26 @@ public class ArrayManager : MonoBehaviour
         // Finally, make sure sockets changed exact place
         socketA.transform.position = originPositionB;
         socketB.transform.position = originPositionA;
+    }
+    
+    // Function to perform bubble sort and return a list of tuples representing swaps
+    private List<Tuple<int, int>> BubbleSortWithSwaps(int[] arr)
+    {
+        List<Tuple<int, int>> swapList = new List<Tuple<int, int>>();
+        int n = arr.Length;
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                // If the element is greater than the next element, swap them
+                if (arr[j] > arr[j + 1])
+                {
+                    swapList.Add(new Tuple<int, int>(j, j + 1));
+                    (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
+                }
+            }
+        }
+        return swapList;
     }
 }
