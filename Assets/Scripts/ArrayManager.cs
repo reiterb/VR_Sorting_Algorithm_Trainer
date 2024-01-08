@@ -15,10 +15,10 @@ public class ArrayManager : MonoBehaviour
 
     [Header("Swap velocity")] public float moveSpeed = 5.0f;
 
-    private int[] arrVal;
+    private int[] _arrVal;
     
-    private Queue<Tuple<int, int>> swapQueue = new Queue<Tuple<int, int>>();
-    private bool isSwapping = false;
+    private Queue<Tuple<int, int>> _swapQueue = new();
+    private bool _isSwapping;
 
     private void Awake()
     {
@@ -40,9 +40,9 @@ public class ArrayManager : MonoBehaviour
     // Updates the Array Value of TMP_Text arrayText on a specific index to an specific value 
     public void UpdateArrayValue(int value, int index)
     {
-        arrVal[index] = value;
+        _arrVal[index] = value;
         string text = "Current Array \n \n";
-        foreach (var t in arrVal)
+        foreach (var t in _arrVal)
         {
             text += "[" + t + "] ";
         }
@@ -60,17 +60,17 @@ public class ArrayManager : MonoBehaviour
             if (valueSocket.ContainsBall())
             {
                 {
-                    arrVal[i] = valueSocket.GetVBall().GetValue();
+                    _arrVal[i] = valueSocket.GetVBall().GetValue();
                 }
             }
             else
             {
-                arrVal[i] = -1;
+                _arrVal[i] = -1;
             }
         }
 
         string text = "Current Array \n \n";
-        foreach (var t in arrVal)
+        foreach (var t in _arrVal)
         {
             text += "[" + t + "] ";
         }
@@ -80,16 +80,16 @@ public class ArrayManager : MonoBehaviour
 
     void InitializeArray()
     {
-        arrVal = new int[sockets.Length];
-        for (int i = 0; i < arrVal.Length; i++)
+        _arrVal = new int[sockets.Length];
+        for (int i = 0; i < _arrVal.Length; i++)
         {
-            arrVal[i] = 0;
+            _arrVal[i] = 0;
         }
 
         arrayText.text = "Current Array \n \n[0] [0] [0]";
     }
 
-    public void testSwap()
+    public void TestSwap()
     {
         Debug.Log("testSwap initialized");
         SwapBallPositions(0, 1);
@@ -98,9 +98,9 @@ public class ArrayManager : MonoBehaviour
         SwapBallPositions(0, 4);
     }
 
-    public void doBubbleSort()
+    public void DoBubbleSort()
     {
-        List<Tuple<int, int>> swapList = BubbleSortWithSwaps(arrVal);
+        List<Tuple<int, int>> swapList = BubbleSortWithSwaps(_arrVal);
 
         foreach (var t in swapList)
         {
@@ -108,7 +108,7 @@ public class ArrayManager : MonoBehaviour
         }
     }
     
-    public void shuffleArray()
+    public void ShuffleArray()
     {
         for (int i = 0; i < sockets.Length; i++)
         {
@@ -126,11 +126,11 @@ public class ArrayManager : MonoBehaviour
         }
         
         // Enqueue the swap request
-        swapQueue.Enqueue(new Tuple<int, int>(indexA, indexB));
+        _swapQueue.Enqueue(new Tuple<int, int>(indexA, indexB));
         Debug.Log($"Enqueued swap request: {indexA} <-> {indexB}");
 
         // If not currently swapping, start the coroutine
-        if (!isSwapping)
+        if (!_isSwapping)
         {
             StartCoroutine(SequentialSwapCoroutine());
         }
@@ -138,16 +138,16 @@ public class ArrayManager : MonoBehaviour
     
     private IEnumerator SequentialSwapCoroutine()
     {
-        isSwapping = true;
+        _isSwapping = true;
 
         // Process swaps one by one
-        while (swapQueue.Count > 0)
+        while (_swapQueue.Count > 0)
         {
-            Tuple<int, int> swapRequest = swapQueue.Dequeue();
+            Tuple<int, int> swapRequest = _swapQueue.Dequeue();
             yield return StartCoroutine(SwapCoroutine(swapRequest.Item1, swapRequest.Item2));
         }
 
-        isSwapping = false;
+        _isSwapping = false;
     }
     
     private IEnumerator SwapCoroutine(int indexA, int indexB)
