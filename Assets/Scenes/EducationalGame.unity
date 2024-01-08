@@ -1312,7 +1312,7 @@ MonoBehaviour:
   - {fileID: 1014938946}
   - {fileID: 498669363}
   arrayText: {fileID: 1964663574}
-  moveSpeed: 1
+  moveSpeed: 2
 --- !u!1 &30139221
 GameObject:
   m_ObjectHideFlags: 0
