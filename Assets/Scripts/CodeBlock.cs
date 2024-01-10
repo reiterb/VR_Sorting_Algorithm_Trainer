@@ -30,7 +30,7 @@ public class CodeBlock : MonoBehaviour
     private void ObjectSnapped(SelectEnterEventArgs arg0)
     {
         var snappedObjectName = arg0.interactableObject;
-        if(snappedObjectName.transform.name == CorrectCodeBlock.name)
+        if(snappedObjectName!= null && snappedObjectName.transform != null && CorrectCodeBlock != null && snappedObjectName.transform.name == CorrectCodeBlock.name)
         {
             linkedCodeBlockManager.CompletedQuizTask();
         }
@@ -39,7 +39,7 @@ public class CodeBlock : MonoBehaviour
     private void ObjectRemoved(SelectExitEventArgs arg0)
     {
         var removedObjectName = arg0.interactableObject;
-        if (removedObjectName.transform.name == CorrectCodeBlock.name)
+        if (removedObjectName != null && removedObjectName.transform != null && CorrectCodeBlock != null && removedObjectName.transform.name == CorrectCodeBlock.name)
         {
             linkedCodeBlockManager.CodeBlockRemoved();
         }
