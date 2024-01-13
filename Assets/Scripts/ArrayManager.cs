@@ -19,7 +19,7 @@ public class ArrayManager : MonoBehaviour
     
     private Queue<Tuple<int, int>> _swapQueue = new();
     private bool _isSwapping;
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -31,7 +31,7 @@ public class ArrayManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     void Start()
     {
         InitializeArray();
@@ -78,6 +78,7 @@ public class ArrayManager : MonoBehaviour
         arrayText.text = text;
     }
 
+    // Initialize the TMP_Text to default
     void InitializeArray()
     {
         _arrVal = new int[sockets.Length];
@@ -86,9 +87,9 @@ public class ArrayManager : MonoBehaviour
             _arrVal[i] = 0;
         }
 
-        arrayText.text = "Current Array \n \n[0] [0] [0]";
+        arrayText.text = "Current Array \n \n[0] [0] [0] [0] [0] [0] [0] [0] [0] [0]";
     }
-
+    
     public void TestSwap()
     {
         Debug.Log("testSwap initialized");
@@ -97,10 +98,20 @@ public class ArrayManager : MonoBehaviour
         SwapBallPositions(4, 5);
         SwapBallPositions(0, 4);
     }
-
+    
     public void DoBubbleSort()
     {
         List<Tuple<int, int>> swapList = BubbleSortWithSwaps(_arrVal);
+
+        foreach (var t in swapList)
+        {
+            SwapBallPositions(t.Item1, t.Item2); 
+        }
+    }
+    
+    public void DoQuickSort()
+    {
+        List<Tuple<int, int>> swapList = QuickSortWithSwaps(_arrVal);
 
         foreach (var t in swapList)
         {
@@ -238,4 +249,47 @@ public class ArrayManager : MonoBehaviour
         }
         return swapList;
     }
+    
+    private List<Tuple<int, int>> QuickSortWithSwaps(int[] arr)
+    {
+        List<Tuple<int, int>> swapList = new List<Tuple<int, int>>();
+        QuickSort(arr, 0, arr.Length - 1, swapList);
+        return swapList;
+    }
+
+    private void QuickSort(int[] arr, int low, int high, List<Tuple<int, int>> swapList)
+    {
+        if (low >= high) return;
+        int pivot = arr[(low + high) / 2];
+        int i = low;
+        int j = high;
+
+        while (i <= j)
+        {
+            while (arr[i] < pivot)
+            {
+                i++;
+            }
+            while (arr[j] > pivot)
+            {
+                j--;
+            }
+
+            if (i <= j)
+            {
+                // Add the swap to the list
+                swapList.Add(new Tuple<int, int>(i, j));
+
+                // Swap arr[i] and arr[j]
+                (arr[i], arr[j]) = (arr[j], arr[i]);
+
+                i++;
+                j--;
+            }
+        }
+
+        QuickSort(arr, low, j, swapList);
+        QuickSort(arr, i, high, swapList);
+    }
+    
 }
