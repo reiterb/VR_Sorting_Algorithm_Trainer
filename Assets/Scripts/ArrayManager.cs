@@ -13,7 +13,9 @@ public class ArrayManager : MonoBehaviour
     public GameObject[] sockets;
     public TMP_Text arrayText;
 
-    [Header("Swap velocity")] public float moveSpeed = 5.0f;
+    [Header("Swap velocity")] public float moveSpeed = 2.0f;
+    private float _maxSpeed = 15f;
+    private float _minSpeed = 1f; 
 
     private int[] _arrVal;
     
@@ -89,6 +91,14 @@ public class ArrayManager : MonoBehaviour
 
         arrayText.text = "Current Array \n \n[0] [0] [0] [0] [0] [0] [0] [0] [0] [0]";
     }
+
+    private void SetMoveSpeed(float value)
+    {
+        moveSpeed += value;
+    }
+    
+    // Callable Functions
+    // -----------------------------------------------------------------------------
     
     public void TestSwap()
     {
@@ -127,7 +137,26 @@ public class ArrayManager : MonoBehaviour
             SwapBallPositions(i, randomIndex);
         }
     }
+    
+    public void IncreaseSpeed()
+    {
+        if (moveSpeed < _maxSpeed)
+        {
+            SetMoveSpeed(1f);
+        }
+    }
+    
+    public void DecreaseSpeed()
+    {
+        if (moveSpeed > _minSpeed)
+        {
+            SetMoveSpeed(-1f);
+        }
+    }
 
+    
+    // Ball swapping
+    // -----------------------------------------------------------------------------
     private void SwapBallPositions(int indexA, int indexB)
     {
         if (indexA < 0 || indexA >= sockets.Length || indexB < 0 || indexB >= sockets.Length)
@@ -229,7 +258,8 @@ public class ArrayManager : MonoBehaviour
         socketB.transform.position = originPositionA;
     }
     
-    // Function to perform bubble sort and return a list of tuples representing swaps
+    // Sort Functions
+    // -----------------------------------------------------------------------------
     private List<Tuple<int, int>> BubbleSortWithSwaps(int[] arr)
     {
         List<Tuple<int, int>> swapList = new List<Tuple<int, int>>();
@@ -291,5 +321,5 @@ public class ArrayManager : MonoBehaviour
         QuickSort(arr, low, j, swapList);
         QuickSort(arr, i, high, swapList);
     }
-    
+
 }
