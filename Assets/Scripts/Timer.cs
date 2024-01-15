@@ -44,27 +44,27 @@ public class Timer : MonoBehaviour
 
     private void ShowGrade()
     {
-        if (elapsedTime < 10f)
+        if (elapsedTime < 120f)
         {
             A.SetActive(true);
         }
-        else if (elapsedTime >= 10f && elapsedTime < 20f)
+        else if (elapsedTime >= 120f && elapsedTime < 210f)
         {
             B.SetActive(true );
         }
-        else if (elapsedTime >= 20f && elapsedTime < 30f)
+        else if (elapsedTime >= 210f && elapsedTime < 360f)
         {
             C.SetActive(true);
         }
-        else if (elapsedTime >= 30f && elapsedTime < 40f)
+        else if (elapsedTime >= 360f && elapsedTime < 900f)
         {
             D.SetActive(true);
         }
-        else if (elapsedTime >= 50f && elapsedTime < 60f)
+        else if (elapsedTime >= 900f && elapsedTime < 1200f)
         {
             E.SetActive(true);
         }
-        else if (elapsedTime >= 60f)
+        else if (elapsedTime >= 1200f)
         {
             F.SetActive(true);
         }

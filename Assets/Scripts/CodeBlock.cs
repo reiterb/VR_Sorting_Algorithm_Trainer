@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class CodeBlock : MonoBehaviour
 {
     [SerializeField] private CodeBlockManager linkedCodeBlockManager;
-    [SerializeField] private Transform CorrectCodeBlock;
+    [SerializeField] private Transform correctCodeBlock;
     private XRSocketInteractor socket;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class CodeBlock : MonoBehaviour
     private void ObjectSnapped(SelectEnterEventArgs arg0)
     {
         var snappedObjectName = arg0.interactableObject;
-        if(snappedObjectName!= null && snappedObjectName.transform != null && CorrectCodeBlock != null && snappedObjectName.transform.name == CorrectCodeBlock.name)
+        if(snappedObjectName!= null && snappedObjectName.transform != null && correctCodeBlock != null && snappedObjectName.transform.name == correctCodeBlock.name)
         {
             linkedCodeBlockManager.CompletedQuizTask();
         }
@@ -39,7 +39,7 @@ public class CodeBlock : MonoBehaviour
     private void ObjectRemoved(SelectExitEventArgs arg0)
     {
         var removedObjectName = arg0.interactableObject;
-        if (removedObjectName != null && removedObjectName.transform != null && CorrectCodeBlock != null && removedObjectName.transform.name == CorrectCodeBlock.name)
+        if (removedObjectName != null && removedObjectName.transform != null && correctCodeBlock != null && removedObjectName.transform.name == correctCodeBlock.name)
         {
             linkedCodeBlockManager.CodeBlockRemoved();
         }
