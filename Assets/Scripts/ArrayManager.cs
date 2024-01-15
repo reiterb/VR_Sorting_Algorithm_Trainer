@@ -21,6 +21,7 @@ public class ArrayManager : MonoBehaviour
     
     private Queue<Tuple<int, int>> _swapQueue = new();
     private bool _isSwapping;
+    private bool _isBusy;  
     
     private void Awake()
     {
@@ -102,6 +103,7 @@ public class ArrayManager : MonoBehaviour
     
     public void TestSwap()
     {
+        if (_isBusy) { return; }
         Debug.Log("testSwap initialized");
         SwapBallPositions(0, 1);
         SwapBallPositions(2, 3);
@@ -111,6 +113,8 @@ public class ArrayManager : MonoBehaviour
     
     public void DoBubbleSort()
     {
+        if (_isBusy) { return; }
+        _isBusy = true;
         List<Tuple<int, int>> swapList = BubbleSortWithSwaps(_arrVal);
 
         foreach (var t in swapList)
@@ -121,6 +125,8 @@ public class ArrayManager : MonoBehaviour
     
     public void DoQuickSort()
     {
+        if (_isBusy) { return; }
+        _isBusy = true;
         List<Tuple<int, int>> swapList = QuickSortWithSwaps(_arrVal);
 
         foreach (var t in swapList)
@@ -131,6 +137,8 @@ public class ArrayManager : MonoBehaviour
     
     public void ShuffleArray()
     {
+        if (_isBusy) { return; }
+        _isBusy = true;
         for (int i = 0; i < sockets.Length; i++)
         {
             int randomIndex = Random.Range(0, sockets.Length);
@@ -188,6 +196,7 @@ public class ArrayManager : MonoBehaviour
         }
 
         _isSwapping = false;
+        _isBusy = false;
     }
     
     private IEnumerator SwapCoroutine(int indexA, int indexB)
