@@ -17,12 +17,13 @@ public class ArrayManager : MonoBehaviour
     private float _maxSpeed = 15f;
     private float _minSpeed = 1f; 
 
-    private int[] _arrVal;
+    private int[] _arrVal;      // last updated values in the array 
     
     private Queue<Tuple<int, int>> _swapQueue = new();
-    private bool _isSwapping;
-    private bool _isBusy;  
-    
+    private bool _isSwapping;   // one swap process is active
+    private bool _isBusy;       // when algorithm is active
+    private Queue<Tuple<int, int>> _remainingSwapQueue = new();
+
     private void Awake()
     {
         if (Instance == null)
@@ -162,7 +163,18 @@ public class ArrayManager : MonoBehaviour
         }
     }
 
-    
+    public void PauseResume() // Crashsimulator
+    {
+        if (_isBusy)
+        {
+            Pause();
+        }
+        else if (!_isBusy && _swapQueue is { Count: > 0 })
+        {
+            Resume();
+        }
+    }
+
     // Ball swapping
     // -----------------------------------------------------------------------------
     private void SwapBallPositions(int indexA, int indexB)
@@ -184,11 +196,34 @@ public class ArrayManager : MonoBehaviour
         }
     }
     
+    private void Pause()
+    {
+        while (_isBusy)
+        {
+            if(!_isSwapping)
+            {
+                _remainingSwapQueue = _swapQueue;
+                _swapQueue = new Queue<Tuple<int, int>>(); 
+                
+                _isSwapping = false;
+                _isBusy = false; 
+            }
+        }
+    }
+
+    private void Resume()
+    {
+        _swapQueue = _remainingSwapQueue; 
+        _remainingSwapQueue = new Queue<Tuple<int, int>>();
+        
+        _isBusy = true;
+        StartCoroutine(SequentialSwapCoroutine());
+    }
+    
     private IEnumerator SequentialSwapCoroutine()
     {
         _isSwapping = true;
 
-        // Process swaps one by one
         while (_swapQueue.Count > 0)
         {
             Tuple<int, int> swapRequest = _swapQueue.Dequeue();
