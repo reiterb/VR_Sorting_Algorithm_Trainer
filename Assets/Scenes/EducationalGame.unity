@@ -3817,7 +3817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 1037929244}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &82552147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10010,7 +10010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 1399959258}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &235059653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11397,7 +11397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 997306195}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &271861917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14252,7 +14252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 1040449579}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &329999007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22711,7 +22711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 2126019329}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &515376011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23785,7 +23785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 1956015421}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &549084841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30784,6 +30784,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685206325}
   m_CullTransparentMesh: 1
+--- !u!1 &695135702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 695135703}
+  - component: {fileID: 695135706}
+  - component: {fileID: 695135705}
+  - component: {fileID: 695135704}
+  m_Layer: 0
+  m_Name: Body
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &695135703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695135702}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2103890503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &695135704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695135702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2893ce9a6695c6947b7d70e2ff0e72c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 1281055927}
+  feet: {fileID: 1653522324}
+--- !u!136 &695135705
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695135702}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &695135706
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695135702}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &698340557
 GameObject:
   m_ObjectHideFlags: 0
@@ -35922,7 +36020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 1946422623}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &829503517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40594,7 +40692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 1001930271}
-  CorrectCodeBlock: {fileID: 827561832}
+  correctCodeBlock: {fileID: 0}
 --- !u!1 &964565871
 GameObject:
   m_ObjectHideFlags: 0
@@ -41505,7 +41603,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4114095773978975052, guid: 2fe167259a7179b48bddc74706b0f320, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -43581,7 +43680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 683399281}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1022298168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45092,7 +45191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 1001930271}
-  CorrectCodeBlock: {fileID: 339396270}
+  correctCodeBlock: {fileID: 0}
 --- !u!1 &1040449578
 GameObject:
   m_ObjectHideFlags: 0
@@ -46434,7 +46533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 1524170031}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1067252520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46630,7 +46729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 38852528}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1070978603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47480,7 +47579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 673044958}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1102988049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47781,7 +47880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 844159711}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1116778119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48428,8 +48527,8 @@ Transform:
   m_GameObject: {fileID: 1132428071}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0742, y: -0.025, z: -0.5366}
-  m_LocalScale: {x: 1.0308282, y: 1.0177, z: 1.0549477}
+  m_LocalPosition: {x: -0.0238, y: -0.025, z: -0.4688}
+  m_LocalScale: {x: 1.0112425, y: 1.0177, z: 1.0685565}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1098467742}
@@ -50893,7 +50992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 373717782}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1175962324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55063,7 +55162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 1001930271}
-  CorrectCodeBlock: {fileID: 416085003}
+  correctCodeBlock: {fileID: 0}
 --- !u!1 &1281055926
 GameObject:
   m_ObjectHideFlags: 0
@@ -56101,7 +56200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 289846902}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1297067165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58325,6 +58424,7 @@ GameObject:
   - component: {fileID: 1319781723}
   - component: {fileID: 1319781722}
   - component: {fileID: 1319781725}
+  - component: {fileID: 1319781726}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
   m_TagString: Untagged
@@ -58391,6 +58491,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1435fc86273e92d45972ae300fdf007a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1319781726
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319781721}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1323528200
 GameObject:
   m_ObjectHideFlags: 0
@@ -60072,7 +60199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 1248870360}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1362427117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62713,7 +62840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 1735152783}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1444881914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63037,6 +63164,7 @@ GameObject:
   - component: {fileID: 1449216946}
   - component: {fileID: 1449216945}
   - component: {fileID: 1449216944}
+  - component: {fileID: 1449216947}
   m_Layer: 0
   m_Name: Right Direct Interactor
   m_TagString: Untagged
@@ -63416,6 +63544,27 @@ MonoBehaviour:
     m_Reference: {fileID: -6447266317303757838, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!135 &1449216947
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449216942}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1456735887
 GameObject:
   m_ObjectHideFlags: 0
@@ -63844,7 +63993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 631727966}
-  CorrectCodeBlock: {fileID: 609419197}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1461345402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64511,7 +64660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 236980429}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1469528165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67465,7 +67614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 1136775633}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1536168071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67917,7 +68066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 1011295132}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1544283055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70974,7 +71123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 219584652}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1630479900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71755,6 +71904,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653176489}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1653522323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1653522324}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1653522324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653522323}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2103890503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1658773353
 GameObject:
   m_ObjectHideFlags: 0
@@ -72337,7 +72517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 320982965}
-  CorrectCodeBlock: {fileID: 1517268049}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1677898210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73018,7 +73198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 9875723}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1687875090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81254,7 +81434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 1001930271}
-  CorrectCodeBlock: {fileID: 111810672}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1912379079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83974,7 +84154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 1001930271}
-  CorrectCodeBlock: {fileID: 1486362198}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &1957649064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88705,6 +88885,8 @@ Transform:
   - {fileID: 1281055927}
   - {fileID: 4103267009741368024}
   - {fileID: 1449216943}
+  - {fileID: 695135703}
+  - {fileID: 1653522324}
   m_Father: {fileID: 1319781724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104036951
@@ -89489,7 +89671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedCodeBlockManager: {fileID: 255226675}
-  CorrectCodeBlock: {fileID: 1036176892}
+  correctCodeBlock: {fileID: 0}
 --- !u!114 &2112102185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90888,6 +91070,7 @@ GameObject:
   - component: {fileID: 7218152301440156824}
   - component: {fileID: 7218152301440156823}
   - component: {fileID: 4110886484995846818}
+  - component: {fileID: 7218152301440156825}
   m_Layer: 0
   m_Name: Left Direct Interactor
   m_TagString: Untagged
@@ -91267,6 +91450,27 @@ MonoBehaviour:
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
+--- !u!135 &7218152301440156825
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702562044492571691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
