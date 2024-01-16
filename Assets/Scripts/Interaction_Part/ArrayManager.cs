@@ -204,7 +204,8 @@ public class ArrayManager : MonoBehaviour
             {
                 _remainingSwapQueue = _swapQueue;
                 _swapQueue = new Queue<Tuple<int, int>>(); 
-                
+                StopAllCoroutines();
+
                 _isSwapping = false;
                 _isBusy = false; 
             }
