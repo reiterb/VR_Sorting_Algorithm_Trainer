@@ -73,7 +73,6 @@ crashlytics-build.properties
 /*.backup
 
 # BigAssets
-
 /Assets/External/College Library/
 /Assets/External/Hospital Laboratory/
 /Assets/External/University Classroom/
