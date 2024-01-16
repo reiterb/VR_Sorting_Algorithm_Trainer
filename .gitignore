@@ -71,6 +71,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /*.backup
+
+# BigAssets
+
 /Assets/External/College Library/
 /Assets/External/Hospital Laboratory/
 /Assets/External/University Classroom/
