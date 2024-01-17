@@ -1,0 +1,5 @@
+Bubble Sort: 
+https://favtutor.com/resources/images/uploads/mceu_61632030011682402256084.png
+
+QuickSort
+https://favtutor.com/blogs/quick-sort-cpp
