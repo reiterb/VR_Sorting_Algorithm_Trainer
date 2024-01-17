@@ -101,34 +101,7 @@ namespace Interaction_Part
             moveSpeed += value;
         }
 
-        private void BallProtection(bool protect)
-        {
-            if (protect)
-            {
-                foreach (var t in sockets)
-                {
-                    var valueSocket = t.GetComponent<Socket>();
-                    if (!valueSocket.ContainsBall()) continue;
-                    {
-                        valueSocket.GetVBall().DisableGrab();
-                    }
-                }
-            }
-            else
-            {
-                foreach (var t in sockets)
-                {
-                    var valueSocket = t.GetComponent<Socket>();
-                    if (!valueSocket.ContainsBall()) continue;
-                    {
-                        valueSocket.GetVBall().EnableGrab();
-                    }
-                }
-            }
-            
-        }
-        
-    
+
         // Callable Functions
         // -----------------------------------------------------------------------------
     
@@ -146,7 +119,6 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
-            BallProtection(_isBusy);
             List<Tuple<int, int>> swapList = BubbleSortWithSwaps(_arrVal);
 
             foreach (var t in swapList)
@@ -159,7 +131,6 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
-            BallProtection(_isBusy);
             List<Tuple<int, int>> swapList = QuickSortWithSwaps(_arrVal);
 
             foreach (var t in swapList)
@@ -172,7 +143,6 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
-            BallProtection(_isBusy);
             for (int i = 0; i < sockets.Length; i++)
             {
                 int randomIndex = Random.Range(0, sockets.Length);
@@ -196,18 +166,6 @@ namespace Interaction_Part
             }
         }
 
-        public void PauseResume() // Crashsimulator
-        {
-            if (_isBusy)
-            {
-                Pause();
-            }
-            else if (!_isBusy && _swapQueue is { Count: > 0 })
-            {
-                Resume();
-            }
-        }
-
         // Ball swapping
         // -----------------------------------------------------------------------------
         private void SwapBallPositions(int indexA, int indexB)
@@ -228,32 +186,7 @@ namespace Interaction_Part
                 StartCoroutine(SequentialSwapCoroutine());
             }
         }
-    
-        private void Pause()
-        {
-            while (_isBusy)
-            {
-                if(!_isSwapping)
-                {
-                    _remainingSwapQueue = _swapQueue;
-                    _swapQueue = new Queue<Tuple<int, int>>(); 
-                    StopAllCoroutines();
 
-                    _isSwapping = false;
-                    _isBusy = false; 
-                }
-            }
-        }
-
-        private void Resume()
-        {
-            _swapQueue = _remainingSwapQueue; 
-            _remainingSwapQueue = new Queue<Tuple<int, int>>();
-        
-            _isBusy = true;
-            StartCoroutine(SequentialSwapCoroutine());
-        }
-    
         private IEnumerator SequentialSwapCoroutine()
         {
             _isSwapping = true;
@@ -266,7 +199,6 @@ namespace Interaction_Part
 
             _isSwapping = false;
             _isBusy = false;
-            BallProtection(_isBusy);
         }
     
         private IEnumerator SwapCoroutine(int indexA, int indexB)

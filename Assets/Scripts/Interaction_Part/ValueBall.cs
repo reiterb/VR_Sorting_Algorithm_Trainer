@@ -25,16 +25,5 @@ namespace Interaction_Part
         {
             return value;
         }
-
-        public void EnableGrab()
-        {
-            keyGrabInteractable.interactionLayers = originalLayer;
-
-        }
-        
-        public void DisableGrab()
-        {
-            keyGrabInteractable.interactionLayers = 2; 
-        }
     }
 }
