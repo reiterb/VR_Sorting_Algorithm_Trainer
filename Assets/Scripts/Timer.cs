@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
         if (isTiming)
         {
             elapsedTime += Time.deltaTime;
-            Debug.Log("Elapsed Time: " + elapsedTime.ToString("F2")); // Output to console instead of UI
+            //Debug.Log("Elapsed Time: " + elapsedTime.ToString("F2")); // Output to console instead of UI
         }
     }
 
