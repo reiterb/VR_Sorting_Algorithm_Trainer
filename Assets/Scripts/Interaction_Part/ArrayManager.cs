@@ -16,6 +16,7 @@ namespace Interaction_Part
         public TMP_Text arrayText;
 
         [Header("Swap velocity")] public float moveSpeed = 2.0f;
+        private float _defaultSpeed = 2f;
         private float _maxSpeed = 15f;
         private float _minSpeed = 1f; 
 
@@ -24,6 +25,7 @@ namespace Interaction_Part
         private Queue<Tuple<int, int>> _swapQueue = new();
         private bool _isSwapping;   // one swap process is active
         private bool _isBusy;       // when algorithm is active
+        private bool _shuffling;   // one swap process is active
         private Queue<Tuple<int, int>> _remainingSwapQueue = new();
 
         private void Awake()
@@ -81,6 +83,31 @@ namespace Interaction_Part
                 text += "[" + t + "] ";
             }
 
+            arrayText.text = text;
+        }
+
+        // Puts Brackets around the tuples about to be swapped 
+        private void VisualizeSwap(int idx1, int idx2)
+        {
+            var text = "Current Array \n \n";
+            for (int i = 0; i < sockets.Length; i++)
+            {
+                if (i == idx1)
+                {
+                    text += " (";
+                }
+
+                text += "[" + _arrVal[i] + "]";
+                if (i == idx2)
+                {
+                    text += ") ";
+                }
+                else
+                {
+                    text += " ";
+                }
+                    
+            }
             arrayText.text = text;
         }
 
@@ -143,6 +170,7 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
+            _shuffling = true;
             for (int i = 0; i < sockets.Length; i++)
             {
                 int randomIndex = Random.Range(0, sockets.Length);
@@ -194,11 +222,25 @@ namespace Interaction_Part
             while (_swapQueue.Count > 0)
             {
                 Tuple<int, int> swapRequest = _swapQueue.Dequeue();
+                if (!_shuffling)
+                {
+                    VisualizeSwap(swapRequest.Item1, swapRequest.Item2);
+                }
+                else // Shuffle at maxSpeed
+                {
+                    moveSpeed = _maxSpeed;
+                }
                 yield return StartCoroutine(SwapCoroutine(swapRequest.Item1, swapRequest.Item2));
             }
 
             _isSwapping = false;
             _isBusy = false;
+            if (_shuffling)
+            {
+                moveSpeed = _defaultSpeed;
+                _shuffling = false; 
+            }
+            
         }
     
         private IEnumerator SwapCoroutine(int indexA, int indexB)
