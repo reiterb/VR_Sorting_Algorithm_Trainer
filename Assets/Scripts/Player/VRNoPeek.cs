@@ -1,57 +1,57 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class VRNoPeek : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private LayerMask collisionLayer; 
-    [SerializeField] private float fadeSpeed; 
-    [SerializeField] private float sphereChecksize;
-
-    private Material cameraFadeMat;
-    private bool isFadeOut;
-    private static readonly int AlphaValue = Shader.PropertyToID("_AlphaValue");
-    private static readonly int Value = Shader.PropertyToID("__AlphaValue");
-
-    private void Awake()
+    public class VRNoPeek : MonoBehaviour
     {
-        cameraFadeMat = GetComponent<Renderer>().material;
-    }
+        [SerializeField] private LayerMask collisionLayer; 
+        [SerializeField] private float fadeSpeed; 
+        [SerializeField] private float sphereChecksize;
+
+        private Material cameraFadeMat;
+        private bool isFadeOut;
+        private static readonly int AlphaValue = Shader.PropertyToID("_AlphaValue");
+        private static readonly int Value = Shader.PropertyToID("__AlphaValue");
+
+        private void Awake()
+        {
+            cameraFadeMat = GetComponent<Renderer>().material;
+        }
     
-    void Update()
-    {
-        if (Physics.CheckSphere(transform.position, sphereChecksize, collisionLayer, QueryTriggerInteraction.Ignore))
+        void Update()
         {
-            CameraFade(1f);
-            isFadeOut = true; 
-        }
-        else
-        {
-            if (!isFadeOut)
+            if (Physics.CheckSphere(transform.position, sphereChecksize, collisionLayer, QueryTriggerInteraction.Ignore))
             {
-                return;
+                CameraFade(1f);
+                isFadeOut = true; 
             }
+            else
+            {
+                if (!isFadeOut)
+                {
+                    return;
+                }
 
-            CameraFade(0f);
+                CameraFade(0f);
+            }
         }
-    }
 
-    private void CameraFade(float targetAlpha)
-    {
-        var fadeValue =
-            Mathf.MoveTowards(cameraFadeMat.GetFloat(AlphaValue), targetAlpha, Time.deltaTime * fadeSpeed); 
-        cameraFadeMat.SetFloat(AlphaValue,fadeValue);
-
-        if (fadeValue <= 0.01f)
+        private void CameraFade(float targetAlpha)
         {
-            isFadeOut = false; 
-        }
-    }
+            var fadeValue =
+                Mathf.MoveTowards(cameraFadeMat.GetFloat(AlphaValue), targetAlpha, Time.deltaTime * fadeSpeed); 
+            cameraFadeMat.SetFloat(AlphaValue,fadeValue);
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(0.1f, 0.7f,0.5f, 0.75f); 
-        Gizmos.DrawSphere(transform.position,sphereChecksize);
+            if (fadeValue <= 0.01f)
+            {
+                isFadeOut = false; 
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = new Color(0.1f, 0.7f,0.5f, 0.75f); 
+            Gizmos.DrawSphere(transform.position,sphereChecksize);
+        }
     }
 }

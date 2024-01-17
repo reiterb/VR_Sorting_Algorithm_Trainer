@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class ValueBall : MonoBehaviour
+namespace Interaction_Part
 {
-    [SerializeField] private int value;
+    public class ValueBall : MonoBehaviour
+    {
+        [SerializeField] private int value;
 
-    public void SetValue(int val)
-    {
-        value = val;
-    }
+        public void SetValue(int val)
+        {
+            value = val;
+        }
     
-    public int GetValue()
-    {
-        return value;
+        public int GetValue()
+        {
+            return value;
+        }
     }
 }
