@@ -100,6 +100,34 @@ namespace Interaction_Part
         {
             moveSpeed += value;
         }
+
+        private void BallProtection(bool protect)
+        {
+            if (protect)
+            {
+                foreach (var t in sockets)
+                {
+                    var valueSocket = t.GetComponent<Socket>();
+                    if (!valueSocket.ContainsBall()) continue;
+                    {
+                        valueSocket.GetVBall().DisableGrab();
+                    }
+                }
+            }
+            else
+            {
+                foreach (var t in sockets)
+                {
+                    var valueSocket = t.GetComponent<Socket>();
+                    if (!valueSocket.ContainsBall()) continue;
+                    {
+                        valueSocket.GetVBall().EnableGrab();
+                    }
+                }
+            }
+            
+        }
+        
     
         // Callable Functions
         // -----------------------------------------------------------------------------
@@ -118,6 +146,7 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
+            BallProtection(_isBusy);
             List<Tuple<int, int>> swapList = BubbleSortWithSwaps(_arrVal);
 
             foreach (var t in swapList)
@@ -130,6 +159,7 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
+            BallProtection(_isBusy);
             List<Tuple<int, int>> swapList = QuickSortWithSwaps(_arrVal);
 
             foreach (var t in swapList)
@@ -142,6 +172,7 @@ namespace Interaction_Part
         {
             if (_isBusy) { return; }
             _isBusy = true;
+            BallProtection(_isBusy);
             for (int i = 0; i < sockets.Length; i++)
             {
                 int randomIndex = Random.Range(0, sockets.Length);
@@ -235,6 +266,7 @@ namespace Interaction_Part
 
             _isSwapping = false;
             _isBusy = false;
+            BallProtection(_isBusy);
         }
     
         private IEnumerator SwapCoroutine(int indexA, int indexB)
