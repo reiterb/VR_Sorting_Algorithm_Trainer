@@ -145,6 +145,7 @@ namespace Interaction_Part
         public void DoBubbleSort()
         {
             if (_isBusy) { return; }
+            UpdateArray();
             _isBusy = true;
             List<Tuple<int, int>> swapList = BubbleSortWithSwaps(_arrVal);
 
@@ -157,6 +158,7 @@ namespace Interaction_Part
         public void DoQuickSort()
         {
             if (_isBusy) { return; }
+            UpdateArray();
             _isBusy = true;
             List<Tuple<int, int>> swapList = QuickSortWithSwaps(_arrVal);
 
@@ -169,6 +171,7 @@ namespace Interaction_Part
         public void ShuffleArray()
         {
             if (_isBusy) { return; }
+            UpdateArray();
             _isBusy = true;
             _shuffling = true;
             for (int i = 0; i < sockets.Length; i++)
