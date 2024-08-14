@@ -37428,10 +37428,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionLayer:
-    serializedVersion: 2
     m_Bits: 64
   fadeSpeed: 1
   sphereChecksize: 0.15
+  cameraFadeMat: {fileID: 0}
+  isFadeOut: 0
 --- !u!1 &722299237
 GameObject:
   m_ObjectHideFlags: 0
